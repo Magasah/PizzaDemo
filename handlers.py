@@ -8,7 +8,6 @@ from aiogram.filters import Command
 
 import data
 import keyboards
-from config import BOT_TOKEN
 
 # In-memory carts: {user_id: {product_id: qty}}
 CARTS: Dict[int, Dict[str, int]] = {}
