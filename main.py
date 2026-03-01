@@ -1,11 +1,21 @@
 import asyncio
+import os
 from aiogram import Bot, Dispatcher
 
-from config import BOT_TOKEN
+try:
+    from config import BOT_TOKEN
+except Exception:
+    BOT_TOKEN = os.environ.get("BOT_TOKEN", "")
+
 import handlers
 
 
 async def main():
+    if not BOT_TOKEN:
+        raise RuntimeError(
+            "BOT_TOKEN is not set. Set the BOT_TOKEN environment variable or provide a config.py"
+        )
+
     bot = Bot(token=BOT_TOKEN)
     dp = Dispatcher()
 
